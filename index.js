@@ -39,7 +39,7 @@ Promise.all(pros).then(function(data){
         });
 
         lists = lists.map(function (){
-            return [$(this).find(".info-one em").html(),  $(this).find(".info-two em").html() + "天",  "剩余"+$(this).find(".info-three em").html(),  $(this).find(".info-four a").attr("href")].join('\t');  
+            return [$(this).find(".info-one em").html(),  $(this).find(".info-two em").html() + "天",  "剩余"+$(this).find(".info-three em").text(),  $(this).find(".info-four a").attr("href")].join('\t');  
         }).toArray();
 
         return prev.concat(lists);
