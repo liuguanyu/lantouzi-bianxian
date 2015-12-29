@@ -18,6 +18,7 @@ cli.allowUnknownOption()
 
 var minProfit = typeof cli.profit !== undefined && parseFloat(cli.profit) ? parseFloat(cli.profit) : 8.00;
 var maxDays = typeof cli.day !== undefined && parseInt(cli.day, 10) ? parseInt(cli.day, 10) : 100;
+
 var mailto = typeof cli.mail == undefined ? undefined : cli.mail;
 
 var pros = arr.map(function (el){
