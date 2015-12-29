@@ -68,6 +68,5 @@ Promise.all(pros).then(function(data){
             // console.dir(reply);
         });
     }
-
     console.log(data.join("\n"));
 });
