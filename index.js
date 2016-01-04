@@ -47,11 +47,19 @@ Promise.all(pros).then(function(data){
             var days = $(this).find(".info-two em").html();
             var leave = $(this).find(".info-three em").text();
 
+            var padZero = function (n){
+                return n < 10 ? "0" + n : n;
+            }; 
+
+            var expire = new Date(+(new Date()) + days * 864e5);
+            var expireDate = [expire.getFullYear(), padZero(expire.getMonth()+1), padZero(expire.getDate())].join("-"); 
+            $(this).attr("data-expire-date", expireDate);
+
             return parseFloat(profit) >= minProfit && parseInt(days, 10) <= maxDays && parseFloat(leave) > 0.00; 
         });
 
         lists = lists.map(function (){
-            return [$(this).find(".info-one em").html(),  $(this).find(".info-two em").html() + "天",  "剩余"+$(this).find(".info-three em").text(),  $(this).find(".info-four a").attr("href")].join('\t');  
+            return [$(this).find(".info-one em").html(),  $(this).find(".info-two em").html() + "天",  "剩余"+$(this).find(".info-three em").text(), "到期:"+$(this).attr("data-expire-date") ,$(this).find(".info-four a").attr("href")].join('\t');  
         }).toArray();
 
         return prev.concat(lists);
